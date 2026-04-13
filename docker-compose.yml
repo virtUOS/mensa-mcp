@@ -1,9 +1,8 @@
 ---
 services:
   mensa-mcp:
-    build: .
+    image: ghcr.io/virtuos/mensa-mcp:latest
     ports:
       - "${MENSA_PORT:-8080}:${MENSA_PORT:-8080}"
     env_file:
       - .env
-    restart: unless-stopped
