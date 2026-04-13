@@ -2,6 +2,9 @@
 import logging
 from mcp.server.fastmcp import FastMCP
 from datetime import date
+from starlette.applications import Starlette
+from starlette.routing import Mount, Route
+from starlette.responses import JSONResponse
 
 from mensa_mcp.scraper import scrape_menu
 from mensa_mcp.cache import DailyCache
@@ -247,3 +250,14 @@ async def get_opening_times(restaurant: str = "") -> str:
         lines.append("")
 
     return "\n".join(lines)
+
+
+async def _health_check(request):
+    return JSONResponse({"status": "healthy"})
+
+
+# Final app — health check + MCP SSE mounted at root
+app = Starlette(routes=[
+    Route("/health", _health_check),
+    Mount("/", mcp.sse_app()),
+])

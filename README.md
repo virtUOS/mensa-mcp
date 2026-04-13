@@ -247,10 +247,7 @@ Add to your MCP client configuration:
 {
   "mcpServers": {
     "mensa": {
-      "url": "http://localhost:8080/sse",
-      "headers": {
-        "Authorization": "Bearer your-api-key"
-      }
+      "url": "http://localhost:8080/sse"
     }
   }
 }
