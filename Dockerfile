@@ -9,9 +9,13 @@ RUN uv sync --frozen --no-dev
 
 COPY mensa_mcp/ mensa_mcp/
 
+# Docker containers need to bind to 0.0.0.0 for external access
+ENV MENSA_HOST=0.0.0.0
+# ENV MENSA_PORT=8080
+
 EXPOSE 8080
 
-HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
-  CMD curl -f http://localhost:8080/health || exit 1
+# HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
+#   CMD sh -c 'curl -f "http://localhost:${MENSA_PORT:-8080}/health" || exit 1'
 
 CMD ["uv", "run", "mensa-mcp"]

@@ -140,7 +140,7 @@ cp .env.example .env
 uv run mensa-mcp
 ```
 
-The server will start on `http://0.0.0.0:8080` by default.
+The server will start on `http://127.0.0.1:8080` by default.
 
 ## Configuration
 
@@ -154,7 +154,7 @@ cp .env.example .env
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `MENSA_HOST` | `0.0.0.0` | Server host address |
+| `MENSA_HOST` | `127.0.0.1` | Server host address |
 | `MENSA_PORT` | `8080` | Server port |
 | `MENSA_WORKERS` | `4` | Number of worker processes |
 | `MENSA_LOG_LEVEL` | `info` | Logging level (debug, info, warning, error) |

@@ -6,7 +6,7 @@ import yaml
 logger = logging.getLogger(__name__)
 
 # --- Server Settings ---
-HOST = os.environ.get("MENSA_HOST", "0.0.0.0")
+HOST = os.environ.get("MENSA_HOST", "127.0.0.1")
 PORT = int(os.environ.get("MENSA_PORT", "8080"))
 WORKERS = int(os.environ.get("MENSA_WORKERS", "4"))
 LOG_LEVEL = os.environ.get("MENSA_LOG_LEVEL", "info")
