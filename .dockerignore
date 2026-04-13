@@ -1,0 +1,78 @@
+# Environment files
+.env
+.env.*
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+*.egg
+wheels/
+*.whl
+
+# IDE and editor configs
+.vscode/
+.roo/
+.idea/
+*.swp
+*.swo
+*~
+
+# Version control
+.git/
+.gitignore
+
+# Documentation
+README.md
+*.md
+docs/
+
+# Test files and configs
+test_*.py
+*_test.py
+tests/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Python version config
+.python-version
+
+# Example configs (not needed in production)
+config.example.yml
+.env.example
+
+# Docker files (not needed inside the image)
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# MCP server configs
+.roo/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+tmp/
+temp/

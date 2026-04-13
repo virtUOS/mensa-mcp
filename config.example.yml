@@ -1,0 +1,23 @@
+# config.yaml is optional — it overrides the defaults set in config.py
+
+restaurants:
+  mensa-schlossgarten:
+    id: 7
+    name: Mensa Schlossgarten
+    address: "Ritterstraße 10, 49074 Osnabrück"
+    opening_times:
+      Mensa:
+        Mo-Fr: "11:30 – 14:15 Uhr"
+        Sa: "12:00 – 14:00 Uhr"
+      Café Lounge:
+        Mo-Fr: "09:00 – 15:00 Uhr"
+
+allergens:
+  a1: Weizen
+  a2: Roggen
+  g: Milch und Laktose
+  # ... only override what you need
+
+additives:
+  "1": Mit Farbstoff
+  # ... only override what you need
