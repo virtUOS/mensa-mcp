@@ -1,4 +1,3 @@
-# mensa_mcp/server.py
 import logging
 from mcp.server.fastmcp import FastMCP
 from datetime import date
@@ -256,8 +255,7 @@ async def _health_check(request):
     return JSONResponse({"status": "healthy"})
 
 
-# Final app — health check + MCP SSE mounted at root
 app = Starlette(routes=[
     Route("/health", _health_check),
-    Mount("/", mcp.sse_app()),
+    Mount("/", mcp.streamable_http_app()),
 ])

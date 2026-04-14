@@ -247,7 +247,8 @@ Add to your MCP client configuration:
 {
   "mcpServers": {
     "mensa": {
-      "url": "http://localhost:8080/sse"
+      "url": "http://localhost:8080/mcp",
+      "type": "streamable-http"
     }
   }
 }
