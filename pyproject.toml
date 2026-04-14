@@ -6,7 +6,7 @@ requires-python = ">=3.11"
 dependencies = [
     "beautifulsoup4>=4.14.3",
     "httpx>=0.28.1",
-    "mcp[cli]>=1.27.0",
+    "fastmcp>=2.0",
     "pyyaml>=6.0.3",
     "sse-starlette>=3.3.4",
     "starlette>=1.0.0",

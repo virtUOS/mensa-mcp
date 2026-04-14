@@ -10,7 +10,6 @@ HOST = os.environ.get("MENSA_HOST", "127.0.0.1")
 PORT = int(os.environ.get("MENSA_PORT", "8080"))
 WORKERS = int(os.environ.get("MENSA_WORKERS", "4"))
 LOG_LEVEL = os.environ.get("MENSA_LOG_LEVEL", "info")
-API_KEY = os.environ.get("MENSA_API_KEY", "")
 
 # --- Scraper Settings ---
 API_URL = os.environ.get(

@@ -158,7 +158,6 @@ cp .env.example .env
 | `MENSA_PORT` | `8080` | Server port |
 | `MENSA_WORKERS` | `4` | Number of worker processes |
 | `MENSA_LOG_LEVEL` | `info` | Logging level (debug, info, warning, error) |
-| `MENSA_API_KEY` | *(empty)* | API key for authentication (optional) |
 | `MENSA_API_URL` | `https://sw-osnabrueck.maxmanager.xyz/...` | MaxManager API URL |
 | `MENSA_API_TIMEOUT` | `10.0` | API request timeout in seconds |
 | `MENSA_PDF_BASE_URL` | `https://www.maxmanager.de/...` | Base URL for weekly menu PDFs |

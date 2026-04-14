@@ -1,5 +1,5 @@
 import logging
-from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP
 from datetime import date
 from starlette.applications import Starlette
 from starlette.routing import Mount, Route
@@ -255,7 +255,14 @@ async def _health_check(request):
     return JSONResponse({"status": "healthy"})
 
 
-app = Starlette(routes=[
-    Route("/health", _health_check),
-    Mount("/", mcp.streamable_http_app()),
-])
+# Create the FastMCP HTTP app (ASGI app in v2)
+mcp_app = mcp.http_app()
+
+# Create the main Starlette app with lifespan from FastMCP HTTP app
+app = Starlette(
+    routes=[
+        Route("/health", _health_check),
+        Mount("/", mcp_app),
+    ],
+    lifespan=mcp_app.lifespan
+)
