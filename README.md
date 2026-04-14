@@ -156,7 +156,6 @@ cp .env.example .env
 |----------|---------|-------------|
 | `MENSA_HOST` | `127.0.0.1` | Server host address |
 | `MENSA_PORT` | `8080` | Server port |
-| `MENSA_WORKERS` | `4` | Number of worker processes |
 | `MENSA_LOG_LEVEL` | `info` | Logging level (debug, info, warning, error) |
 | `MENSA_API_URL` | `https://sw-osnabrueck.maxmanager.xyz/...` | MaxManager API URL |
 | `MENSA_API_TIMEOUT` | `10.0` | API request timeout in seconds |
