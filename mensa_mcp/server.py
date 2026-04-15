@@ -280,3 +280,38 @@ app = Starlette(
     ],
     lifespan=mcp_app.lifespan
 )
+
+
+def run_stdio():
+    """Run the MCP server using stdio transport."""
+    import asyncio
+    asyncio.run(mcp.run_stdio_async())
+
+
+def run_http(host: str = "0.0.0.0", port: int = 8000):
+    """Run the MCP server using HTTP transport.
+
+    Args:
+        host: Host to bind to. Defaults to "0.0.0.0".
+        port: Port to bind to. Defaults to 8000.
+    """
+    import uvicorn
+    uvicorn.run(app, host=host, port=port, log_level="info")
+
+
+if __name__ == "__main__":
+    import sys
+    import os
+
+    # Check for --stdio flag or MENSAMCP_TRANSPORT=stdio environment variable
+    use_stdio = "--stdio" in sys.argv or os.environ.get("MENSAMCP_TRANSPORT") == "stdio"
+
+    if use_stdio:
+        logger.info("Starting Mensa MCP server in stdio mode")
+        run_stdio()
+    else:
+        # Default to HTTP mode
+        host = os.environ.get("MENSAMCP_HOST", "0.0.0.0")
+        port = int(os.environ.get("MENSAMCP_PORT", "8000"))
+        logger.info(f"Starting Mensa MCP server in HTTP mode on {host}:{port}")
+        run_http(host=host, port=port)
