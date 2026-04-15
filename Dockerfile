@@ -19,6 +19,6 @@ ENV MENSA_PORT=8080
 EXPOSE 8080
 
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
-  CMD sh -c 'curl -f "http://localhost:${MENSA_PORT:-8080}/health" || exit 1'
+  CMD python -c "import urllib.request; import os; port = os.environ.get('MENSA_PORT', '8080'); urllib.request.urlopen(f'http://localhost:{port}/health', timeout=5)"
 
 CMD ["uv", "run", "mensa-mcp"]
