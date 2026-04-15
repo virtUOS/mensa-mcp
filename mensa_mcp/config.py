@@ -10,6 +10,9 @@ HOST = os.environ.get("MENSA_HOST", "127.0.0.1")
 PORT = int(os.environ.get("MENSA_PORT", "8080"))
 LOG_LEVEL = os.environ.get("MENSA_LOG_LEVEL", "info")
 
+# --- Timezone Setting ---
+TIMEZONE = os.environ.get("MENSA_TIMEZONE", "Europe/Berlin")
+
 # --- Scraper Settings ---
 API_URL = os.environ.get(
     "MENSA_API_URL",
