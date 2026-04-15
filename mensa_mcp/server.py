@@ -1,6 +1,7 @@
 import logging
 from fastmcp import FastMCP
 from datetime import date, datetime
+from zoneinfo import ZoneInfo
 from starlette.applications import Starlette
 from starlette.routing import Mount, Route
 from starlette.responses import JSONResponse
@@ -11,6 +12,7 @@ from mensa_mcp.models import (
     RESTAURANTS, ALLERGENS, ADDITIVES,
     DailyMenu, Dish, get_pdf_urls, resolve_codes,
 )
+from mensa_mcp.config import TIMEZONE
 from mensa_mcp.exceptions import ScraperError, RestaurantNotFoundError, InvalidDateError
 
 logger = logging.getLogger(__name__)
@@ -254,7 +256,13 @@ async def get_opening_times(restaurant: str = "") -> str:
 @mcp.tool()
 async def get_datetime() -> str:
     """Return today's date and current time."""
-    now = datetime.now()
+    try:
+        tz = ZoneInfo(TIMEZONE)
+    except Exception:
+        # Fall back to UTC if timezone is invalid
+        tz = ZoneInfo("UTC")
+        logger.warning(f"Invalid timezone '{TIMEZONE}', using UTC instead")
+    now = datetime.now(tz)
     return f"Current date and time: {now.strftime('%Y-%m-%d %H:%M:%S')}"
 
 
