@@ -1,6 +1,6 @@
 import logging
 from fastmcp import FastMCP
-from datetime import date
+from datetime import date, datetime
 from starlette.applications import Starlette
 from starlette.routing import Mount, Route
 from starlette.responses import JSONResponse
@@ -249,6 +249,13 @@ async def get_opening_times(restaurant: str = "") -> str:
         lines.append("")
 
     return "\n".join(lines)
+
+
+@mcp.tool()
+async def get_datetime() -> str:
+    """Return today's date and current time."""
+    now = datetime.now()
+    return f"Current date and time: {now.strftime('%Y-%m-%d %H:%M:%S')}"
 
 
 async def _health_check(request):
